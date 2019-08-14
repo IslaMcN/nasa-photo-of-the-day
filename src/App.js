@@ -17,7 +17,9 @@ useEffect(() => {
   {const apod = response.data.url;
   setImg(apod);
   const header = response.data.title;
-  setTitle(header)})
+  setTitle(header);
+  const paragraph = response.data.explanation;
+  setInfo(paragraph);})
 .catch(err => console.log('err'));
 
 
@@ -26,9 +28,10 @@ useEffect(() => {
 
   return (
     <div className="App">
-      <p>
+      <header>
        Title: {title}
-      </p>
+      </header>
+      <p>{info}</p>
       <img src={img} alt="apod"/>
     </div>
   );
