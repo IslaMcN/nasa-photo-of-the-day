@@ -15,7 +15,9 @@ useEffect(() => {
 .get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
 .then( response => 
   {const apod = response.data.url;
-  setImg(apod)})
+  setImg(apod);
+  const header = response.data.title;
+  setTitle(header)})
 .catch(err => console.log('err'));
 
 
@@ -25,8 +27,7 @@ useEffect(() => {
   return (
     <div className="App">
       <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
+       Title: {title}
       </p>
       <img src={img} alt="apod"/>
     </div>
