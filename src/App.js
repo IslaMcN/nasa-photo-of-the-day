@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 
-function App(props) {
+function App() {
   const [img, setImg] = useState()
   const [title, setTitle] = useState()
   const [info, setInfo] = useState()
@@ -19,7 +19,9 @@ useEffect(() => {
   const header = response.data.title;
   setTitle(header);
   const paragraph = response.data.explanation;
-  setInfo(paragraph);})
+  setInfo(paragraph);
+  const day = response.data.date;
+  setDate(day)})
 .catch(err => console.log('err'));
 
 
@@ -28,11 +30,13 @@ useEffect(() => {
 
   return (
     <div className="App">
-      <header>
-       Title: {title}
+      <header className="App-header">
+        <h1>{title}</h1>
+       <h2>{date}</h2>
       </header>
+      <img className="img" src={img} alt="apod"/>
       <p>{info}</p>
-      <img src={img} alt="apod"/>
+      
     </div>
   );
 }
